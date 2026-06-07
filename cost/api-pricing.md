@@ -74,3 +74,22 @@
 - [ ] 建立项目级模型选型表：标注每个场景的推荐模型和成本上限
 - [ ] 统计当前 API 调用中各模型的 token 消耗占比，识别降本空间
 - [ ] 评估是否因 Gemini 3.5 Flash 涨价而迁移现有调用
+
+---
+
+## 行业成本趋势：AI 支出失控与 SpaceX 成为最大算力提供商
+
+**日期**：2026-06-05
+**来源**：https://techcrunch.com/2026/06/05/google-will-pay-spacex-920m-per-month-for-compute/
+**可信度**：🟢 官方（监管文件确认）
+
+### 变动内容
+- Google 签署协议，2026年10月至2029年6月向 SpaceX 支付 **$920M/月** 租用约 11 万张 Nvidia GPU
+- Anthropic 此前已签约支付 **$1.25B/月** 租用 SpaceX Colossus 1 算力
+- 两家合计：$2.17B/月 流向 SpaceX
+- Google 称为「桥接容量」以满足 Gemini Enterprise Agent 平台的激增需求
+
+### 对我们项目的影响
+- **即使 Google（全球最大 AI 算力拥有者）也无法自给自足**——算力瓶颈是行业级约束
+- **SpaceX 意外成为最大 AI 基础设施赢家**——AI 算力租赁市场规模远超预期
+- **GPU 供应紧张将持续**→ API 价格短期内不会大幅下降，选型降本更加重要

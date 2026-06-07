@@ -115,3 +115,58 @@ elif 任务 == "复杂推理/安全审查":
 - [ ] 对非推理场景，评估切换到 DeepSeek V4 Flash 的成本节省
 - [ ] 实现简易模型路由：简单任务 → Flash/小模型，复杂任务 → Opus/GPT-5.5
 - [ ] 检查现有 System Prompt 是否可以精简 + 缓存优化
+
+---
+
+## 7. Tokenomics Foundation — AI 支出的行业标准即将到来
+
+**日期**：2026-06-05
+**来源**：https://techcrunch.com/2026/06/05/the-token-bill-comes-due-inside-the-industry-scramble-to-manage-ais-runaway-costs/
+**可信度**：🟢 官方（Linux Foundation 旗下 FinOps Foundation 主导）
+
+### 背景：AI 支出正在失控
+
+2026 年上半年的 AI 支出数据堪称触目惊心：
+
+| 事件 | 详情 |
+|------|------|
+| Uber | 2026 全年 AI 预算在 **4 月已耗尽** |
+| Microsoft | 收回开发者的 Claude Code 许可证 |
+| Priceline | Cursor 续费报价涨 **4-5x** |
+| 某公司 | 忘记设用量限制，收到 **$5 亿 Claude 账单** |
+| 总体 | 开发者人均 token 消耗 9 个月涨 **18.6x** |
+
+### Tokenomics Foundation 是什么
+
+Linux Foundation 旗下 FinOps Foundation 推动的新标准组织，目标是：
+- 定义「tokenomics」的权威定义和框架
+- 建立 AI token 用量和计费的开放标准/指标
+- 提出新指标：**cost-per-intelligence**（单位智能成本）、**tokens-per-watt**（每瓦特 token 数）
+- 统一跨厂商的 token 计价语言（目前每家对「token」的计量不同）
+- 正式发布 **2026 年 7 月**
+
+### 市场响应
+
+多个赛道已在形成：
+- **纯成本追踪**：Pay-i（AI 投入的追踪/测算/优化）、Paid（按实际价值 token 计费）
+- **工程效能**：Jellyfish、Waydev、Faros AI（Agent 监控 + ROI 证明）
+- **现有平台的扩展**：Ramp（AI 支出管理）、Datadog/New Relic（token 级可观测性）、AWS（预计下周推出 AI 财务管理功能）
+- **模型路由**：Factory 推出自动选择最便宜模型的 router；Anthropic 企业版已将 Opus 调用自动路由到 Sonnet/Haiku
+
+### 最佳 ROI 策略
+
+Jellyfish 研究：
+- Token 消耗最多的工程师生产力约为普通工程师的 **2x**，但 token 消耗是 **10x**
+- 「最佳 ROI 来自将中间层从低→中等使用率提升，而非推动重度用户更高」
+
+### 对我们项目的影响
+- **立即建立 token 用量监控**：在 Tokenomics Foundation 标准发布前，至少要有按模型/按场景的用量面板
+- **设置硬性上限**：参考 Uber 的教训——没有用量限制 = 预算黑洞
+- **评估模型路由**：如果尚未实现模型路由（简单→Flash，复杂→Opus），这是最立竿见影的降本手段（35x+ 价差）
+- **关注 Tokenomics Foundation 7 月发布**：标准确定后，各厂商将开始兼容，提前准备可抢占先机
+
+### 行动项
+- [ ] 建立按模型/按场景/按开发者的 token 用量仪表盘（最晚 7 月底前完成）
+- [ ] 对每个使用者/团队设置 token 用量预警和硬性上限
+- [ ] 评估商用模型路由方案（Factory）vs 自建路由
+- [ ] 订阅 FinOps Foundation 的 Tokenomics 工作组进展

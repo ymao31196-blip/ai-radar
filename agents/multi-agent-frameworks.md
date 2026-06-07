@@ -43,3 +43,4 @@
 - [ ] 如果当前在用 AutoGen，立即制定向 MAF 或 LangGraph 的迁移计划
 - [ ] 新项目根据团队技术栈选择：Python 团队优先 LangGraph / CrewAI；.NET 团队优先 MAF
 - [ ] 关注 Deep Agents、MAF Skills、CrewAI 对话流这三个新能力的实际表现
+- [ ] 关注 Microsoft ACS（Agent Control Specification，6月2日发布）：跨框架 Agent 治理标准，三大框架均已支持，可作为统一安全层叠加
