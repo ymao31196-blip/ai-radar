@@ -2,6 +2,10 @@
 
 > 从 [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)（88.6k stars）中精选的高质量社区 MCP Server 和 Skill，按开发者日常高频场景分类。
 
+**日期**：2026-05-22 ~ 06-11
+**来源**：GitHub modelcontextprotocol 组织 + 各 SDK 仓库 + 社区项目
+**可信度**：🟡 混合来源（官方 + 社区）
+
 ---
 
 ## 🤖 编码智能体 & 开发工具
@@ -784,40 +788,42 @@ npm install fastmcp
 
 ---
 
-## [模式] Anthropic Partner Hub MCP 连接器 — 企业内部数据 Agent 模板
+## [MCP Server] Lovie — Company Formation MCP
 
-**日期**：2026-06-03
-**类型**：MCP 应用模式（非独立 Server）
-**来源**：https://www.anthropic.com/news/services-track-partner-hub
-**可信度**：🟢 官方
-**平台**：Claude
+**日期**：2026-06-10
+**类型**：MCP Server
+**来源**：[GitHub issue #4296](https://github.com/modelcontextprotocol/servers/issues/4296) ｜ [仓库](https://github.com/lovieco/lovie-company-formation-mcp-npx)
+**可信度**：🟡 社区项目 / 官方仓库 issue
+**平台**：Claude / 通用
 
 ### 一句话描述
-Anthropic 将合作伙伴运营数据（认证人数、部署数、案例引用）通过 MCP 连接到 Claude，实现自然语言查询内部业务指标。
+把公司设立、银行开户、卡、发票和支付这类流程封装成一个可通过 MCP 调用的商业操作服务。
 
 ### 安装方式
-非公开 MCP Server；但模式可复用：
-```
-内部数据库 → REST API → MCP Server → Claude 自然语言查询
+```bash
+npx -y lovie
+
+{"mcpServers":{"lovie":{"command":"npx","args":["-y","lovie"]}}}
 ```
 
 ### 核心能力
-- 结构化业务数据 MCP 化：分级数据、交易状态、认证进度
-- 自然语言运营查询：「我离下一级还有多远？」「某笔注册交易状态？」
-- 每日自动刷新 + 晋升半年处理
+- 公司设立（entity type、state、name availability、shareholders、certificate、filing fee）
+- 银行账户开户
+- 虚拟/实体卡发行
+- 发票和支付
+- 交易分类
 
 ### 有什么用
-> 这是 Anthropic 官方展示的 MCP 内部应用模板：**业务数据 → MCP → 自然语言查询**。任何有内部运营数据的企业都可以复用这个三步走模式。
-
-### 使用示例
-```markdown
-「查一下我们团队还有几个认证名额没完成，列出需要补充的案例数量」
-```
+> 适合把重复的公司注册 / 基础财务运营流程交给 agent 做编排，再由人类在关键步骤做最终确认。
 
 ### 限制 & 注意
-- 不对外公开，仅限 Anthropic 合作伙伴
-- 但模式完全可复用——用 FastMCP 封装你的内部数据库即可实现相同效果
+- 依赖 hosted HTTPS endpoint + OAuth，首次使用会要求认证
+- 涉及公司注册和金融操作，必须按 jurisdiction / compliance 做人工审核
+- npx 代理只是桥接层，不等于可以绕开合规流程
 
-### 行动项
-- [ ] 评估将内部运营指标通过 MCP 暴露给 Agent 的可行性
-- [ ] 参考「业务数据 → MCP → 对话」三步走模式构建内部数据 Agent
+### 同类对比
+| 工具 | 优势 | 劣势 |
+|------|------|------|
+| Lovie MCP | 端到端公司设立/财务操作 | 高合规敏感度，依赖 OAuth |
+| 手工表单流程 | 可控 | 低自动化、耗时高 |
+| 通用 Agent + 网页操作 | 灵活 | 流程稳定性和审计性较弱 |

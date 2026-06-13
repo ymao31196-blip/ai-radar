@@ -2,7 +2,7 @@
 
 **日期**：2026-06-04/05
 **官网**：https://github.com/features/copilot
-**来源**：TechCrunch (Lucas Ropek)
+**来源**：[GitHub Copilot plans](https://github.com/features/copilot/plans)；[GitHub Copilot billing docs](https://docs.github.com/copilot/reference/copilot-billing/models-and-pricing)；[TechCrunch (Lucas Ropek)](https://techcrunch.com/2026/05/30/what-a-joke-github-copilots-new-token-based-billing-spurs-consternation-among-devs/)
 **阶段**：🟡 快速增长 / 定价争议中
 
 ### 一句话定位
