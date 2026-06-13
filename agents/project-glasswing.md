@@ -1,7 +1,7 @@
 # Project Glasswing — AI-for-Cyberdefense 受控发布模式
 
-**日期**：2026-05-22（初始更新）/ 2026-06-02（扩展公告）
-**来源**：https://www.anthropic.com/news/expanding-project-glasswing
+**日期**：2026-05-22（初始更新）/ 2026-06-02（扩展公告）/ 2026-06-09（Fable 5 / Mythos 5）/ 2026-06-12（暂停访问）
+**来源**：https://www.anthropic.com/news/expanding-project-glasswing ｜ https://www.anthropic.com/news/claude-fable-5-mythos-5 ｜ https://www.anthropic.com/news/fable-mythos-access
 **可信度**：🟢 官方
 
 ### 核心思路
@@ -44,15 +44,30 @@ Mythos Preview (受限发布)
 - 早期扫描中已发现 **10,000+ 个高危或严重安全漏洞**
 - 当前瓶颈不是发现漏洞，而是验证、披露和修补已有发现
 
+### 2026-06-09 更新：Fable 5 / Mythos 5 把受控发布推进到通用版
+Anthropic 在 6 月 9 日把 Project Glasswing 的模型层推进了一步：**Claude Fable 5** 变成了面向所有用户的通用版本，而 **Claude Mythos 5** 则继续作为去掉部分安全护栏的 trusted access 版本，优先面向 Glasswing 合作方。
+
+- **Fable 5**：更适合长时运行的自治工作、复杂代码迁移、多 Agent 协作和知识工作。
+- **Mythos 5**：同一底层模型，但保留在受限访问和更严格的安全边界内，适合高风险安全研究场景。
+- **定价**：输入 $10 / 百万 token，输出 $50 / 百万 token。
+- **实际价值**：对需要长上下文、持续规划和自动修正的 Agent 工作流，模型上限明显抬高。
+- **限制**：Fable 5 的安全过滤仍偏保守，部分良性请求会回退到 Opus 4.8；Mythos 5 仍然不是开放模型。
+
+### 2026-06-12 更新：Fable 5 / Mythos 5 暂停访问
+Anthropic 表示，美国政府以国家安全和出口管制为由要求暂停 Fable 5 / Mythos 5 的访问。为确保合规，Anthropic 已对所有客户停用两款模型，并表示正在争取恢复；其他 Claude 模型不受影响。
+
+- **对 Glasswing 的影响**：Mythos 5 的受控访问同样暂停，当前不能把它视为可用的安全研究能力。
+- **可复用教训**：高风险模型除了技术护栏，还会受到政策和出口管制约束，生产架构必须准备模型回退路径。
+
 ### 适用场景
 - ✅ 适合：安全敏感型组织（金融、医疗、基础设施）的代码审计
 - ✅ 适合：开源核心依赖的漏洞扫描
-- ❌ 不适合：组织规模太小（目前仅限合作方），无法直接使用 Mythos
+- ❌ 当前不可用：Fable 5 / Mythos 5 自 2026-06-12 起暂停访问
 
 ### 可复用的模式
 - **Foundational model + restricted-access deployment**：高风险能力采用受控发布
 - **Scan → Fix → Learn**：AI 安全审计的闭环流程
 
 ### 行动项
-- [ ] 关注 Mythos 公开发布时间线：可能带来代码安全审计的新范式
+- [ ] 关注 Fable 5 / Mythos 5 的访问恢复和后续政策变化
 - [ ] 借鉴「受控发布」策略：我们内部的敏感 AI 能力是否也应分级发布？

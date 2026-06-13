@@ -1,8 +1,8 @@
 # Cursor — AI 编码平台的三级跳
 
-**日期**：2026-06-05
+**日期**：2026-06-05 ~ 2026-06-10
 **官网**：https://cursor.com
-**来源**：cursor.com/blog（近两周 12 篇官方博客）+ Bloomberg + TechCrunch
+**来源**：cursor.com/blog（近两周 12 篇官方博客）+ cursor.com/changelog + Bloomberg / TechCrunch（可靠媒体）
 **阶段**：🟢 已盈利 / 快速爆发
 
 ### 一句话定位
@@ -12,9 +12,17 @@
 - **Composer 2.5**：长周期 Agent 任务，自动跨文件编辑、测试、提交
 - **Cloud Agents**（新）：代码修改在云端沙箱运行，不占用本地资源
 - **Design Mode**（新）：视觉提示 + 语音输入驱动 UI 生成
-- **Bugbot**：自动发现和修复 Bug
+- **Bugbot**：自动发现和修复 Bug，并在 2026-06-10 升级为更快、更便宜的前置审查流程
 - **Cursor SDK**（新）：编程式控制 Agent，支持自定义工具和嵌套子 Agent
 - **Auto-review**（新）：Shell/MCP/Fetch 调用智能审批，白名单自动放行
+
+### 2026-06-10：Bugbot 更新
+- 平均审查时间降到约 90 秒，较此前约 5 分钟快了 3 倍左右。
+- 单次审查平均发现 0.62 个 bug，较之前的 0.56 提升约 10%，单次成本下降约 22%。
+- `/review` 可以在 push 前同时调起 Bugbot 和 Security Review，也可以直接用 `/review-bugbot`、`/review-security`。
+- 与 GitHub / GitLab 同步；如果同一个 diff 已经审过，Bugbot 会跳过重复审查。
+- 可以配置只审查 PR 里的新增内容，减少历史噪音。
+- 在 Cursor 3.7+ 和 `cursor.com/agents` 可用，CLI 支持仍在补充中。
 
 ### 技术栈（已知/推测）
 - 模型：自研模型 + 多模型接入（Claude Opus 4.8 在 CursorBench 上表现最佳）

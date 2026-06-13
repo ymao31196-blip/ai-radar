@@ -8,27 +8,20 @@
 
 ## 更新记录
 
-### v1.0 — 2026-06-06
+### v1.0 — 2026-06-04
 
-**来源**：https://techcrunch.com/2026/06/06/openai-unveils-lockdown-mode-to-protect-sensitive-data-from-prompt-injection-attacks/
+**来源**：[OpenAI Blog](https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt/)；[OpenAI Help Center](https://help.openai.com/articles/20001061)
 **可信度**：🟢 官方
 
 #### 变化了什么
-- 新功能：**Lockdown Mode** — 一键关闭 ChatGPT 的四个高风险能力以缩小 prompt injection 攻击面：
-  - ❌ 实时网页浏览（仅保留缓存内容）
-  - ❌ 网页图片检索/显示
-  - ❌ Deep Research（深度研究）
-  - ❌ Agent Mode（代理模式）
-- 适用对象：处理敏感数据的组织和用户（ChatGPT Business + 符合条件的个人账户）
-- 限制：**非银弹** — 缓存的网页内容和上传文件仍可能携带注入攻击
+- 新功能：**Lockdown Mode** — 面向高安全需求用户的可选安全设置，可显著收紧 ChatGPT 对外部系统的连接面。
+- 受影响能力：实时网页访问、网页图片支持、Deep Research（含购物研究）、Agent Mode、Canvas 网络访问、实时连接器和文件下载都会被限制或关闭。
+- 适用对象：ChatGPT Enterprise，后续扩展到个人 ChatGPT 账户以及 self-serve ChatGPT Business 账户。
+- 限制：**非银弹** — 它能减少 prompt injection 风险，但不能保证彻底杜绝数据外泄。
 
 #### 有什么用
-- **敏感数据处理场景**：金融、法律、医疗等需要严格控制数据泄露风险的场景，可以锁定 ChatGPT 的安全模式
-- **架构设计参考**：如果你的产品也面临 prompt injection 风险，Lockdown Mode 的「四点切断」策略可复用：
-  1. 切断实时外部内容获取
-  2. 切断富媒体检索
-  3. 切断自主研究能力
-  4. 切断 Agent 自主行动
+- **敏感数据处理场景**：金融、法律、医疗等需要严格控制数据泄露风险的场景，可以使用更保守的 ChatGPT 安全模式。
+- **架构设计参考**：如果你的产品也面临 prompt injection 风险，Lockdown Mode 的思路可以复用为“限制联网面 + 限制文件/富媒体输入 + 限制自动代理动作”。
 - **安全评估框架**：Lockdown Mode 的取舍（安全 vs 功能）提供了一个评估 AI 产品攻击面的框架
 
 #### 迁移成本
