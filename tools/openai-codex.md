@@ -55,3 +55,28 @@
 #### 行动项
 - [ ] 如果要试 alpha，单独 pin 版本并准备回退方案。
 - [ ] 不要把 pre-release 作为默认升级路径。
+
+---
+
+### 0.140.0（稳定版候选）— 2026-06-13 至 06-27
+
+**来源**：[OpenAI Codex Changelog](https://developers.openai.com/codex/changelog) ｜ [GitHub Releases](https://github.com/openai/codex/releases)
+**可信度**：🟢 官方
+
+#### 变化了什么
+- **DigitalOcean 插件**：Codex 可在会话中直接创建 DigitalOcean Droplet、配置 SSH 并连接为远程工作区
+- **连接安全性**：2026-06-08 之后的连接保持配对；更早的非活跃连接需重新配对
+- **ChatGPT App + Codex App 版本联动**：要求两端均升级到最新版本才能保持连接
+- 0.140.0 系列延续 alpha 迭代，暂未发布独立稳定版（截至 06-27）
+
+#### 有什么用
+- **远程开发工作流**：DigitalOcean 插件让 Codex 从「本地 agent」扩展为「云端 agent」— 可在会话中无感创建云开发环境
+- **配对机制变更**：如果有自动化脚本依赖 Codex 连接，需检查配对有效期
+
+#### 迁移成本
+- 旧连接需重新配对，对 CI/CD 脚本可能有影响
+- DigitalOcean 插件产生额外云资源费用
+
+#### 行动项
+- [ ] 测试 DigitalOcean 插件：评估「会话内创建远程环境」对开发效率的提升
+- [ ] 检查自动化流程中的 Codex 连接配对状态

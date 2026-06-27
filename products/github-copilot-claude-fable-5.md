@@ -43,4 +43,26 @@ GitHub 曾把 Anthropic 的 Claude Fable 5 纳入 Copilot 模型选择器，但�
 - [ ] 跟踪 GitHub 与 Anthropic 的恢复公告，恢复前不要依赖该模型。
 - [ ] 如果团队用 Copilot Business / Enterprise，先确认是否允许 30 天数据保留。
 - [ ] 检查管理员侧是否已经启用 Claude Fable 5 policy。
-- [ ] 评估是否要把“更多模型选择”作为高阶套餐的核心卖点。
+- [ ] 评估是否要把"更多模型选择"作为高阶套餐的核心卖点。
+
+---
+
+## Copilot 模型退役：Opus 4.6 (Fast) 将于 6/29 下线
+
+**日期**：2026-06-29（退役日期）
+**来源**：[GitHub Copilot Changelog](https://github.blog/changelog/label/copilot/)
+**可信度**：🟢 官方
+
+### 是什么
+- GitHub Copilot 将于 2026-06-29 在所有体验中退役 Opus 4.6（Fast）模型
+- 影响范围：Copilot Chat、inline edits、ask/agent 模式、code completions
+- Fable 5 恢复前，Copilot 可用模型将进一步收缩
+
+### 有什么用
+- **选型决策**：Opus 4.6 退役 + Fable 5 暂停 = GitHub Copilot 的高端模型选择暂时受限
+- **迁移窗口**：6/29 前依赖 Opus 4.6 的工作流需切换到其他模型
+- **产品信号**：模型生命周期管理正在加速——旧模型退役时间从数月缩短到数周
+
+### 行动项
+- [ ] 检查 GitHub Copilot 设置中当前默认模型，如果设为 Opus 4.6 需在 6/29 前切换
+- [ ] 评估剩余可用模型（GPT-5.5、Opus 4.8）是否能满足现有工作流需求

@@ -123,3 +123,33 @@
 - **即使 Google（全球最大 AI 算力拥有者）也无法自给自足**——算力瓶颈是行业级约束
 - **SpaceX 意外成为最大 AI 基础设施赢家**——AI 算力租赁市场规模远超预期
 - **GPU 供应紧张将持续**→ API 价格短期内不会大幅下降，选型降本更加重要
+
+---
+
+## Anthropic 6/15 订阅计费拆分 — Agent SDK 独立信用池
+
+**日期**：2026-06-15（生效）
+**来源**：[Anthropic Support — Agent SDK 信用额](https://support.claude.com/en/articles/15036540-use-the-claude-agent-sdk-with-your-claude-plan) ｜ [Codersera 解读](https://codersera.com/blog/anthropic-june-2026-billing-change-claude-code/)
+**可信度**：🟢 官方
+
+### 变动内容
+- Claude Agent SDK、`claude -p` 命令、Claude Code GitHub Actions 及所有第三方 Agent 应用（OpenClaw、Conductor、Zed、Jean 等）**移出**订阅使用池
+- 改为**独立月度信用额**，按完整 API 费率计费，**不滚动**（月底清零）
+
+| 订阅计划 | 月度 Agent 信用额 | 备注 |
+|---------|-------------------|------|
+| Pro | $20 | 约等于 2M Fable 5 输入 token（$10/1M input 计） |
+| Max (5x) | $100 | |
+| Max (20x) | $200 | |
+| Team / Enterprise | 按席位 | |
+| API Key 用户 | 不适用 | 直接走 API 账单 |
+
+### 对我们项目的影响
+- **成本拆分清晰化**：交互式 Claude Code 终端使用仍走订阅；自动化 Agent 走信用池 — 两个池子分别管控
+- **Agent 用量可视化**：信用池按 API 费率计量，消耗更透明，也更容易用完
+- **第三方 Agent 影响**：所有依赖 Agent SDK 的第三方工具（如 OpenClaw、Conductor）不再享受订阅无限量
+
+### 行动项
+- [ ] 检查是否已通过 Anthropic 邮件 Claim 信用额（需在 6/15 前领取）
+- [ ] 审计现有 Claude Agent 用量的计费归属（订阅 vs Agent SDK）
+- [ ] 评估 $20/$100/$200 信用池是否够用，如果不够需升级订阅或切到 API Key 模式

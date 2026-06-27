@@ -54,3 +54,33 @@
 ### 行动项
 - [ ] 借鉴「三级跳」产品策略：我们的 AI 产品是否可以从辅助→协作→自主分阶段规划？
 - [ ] 研究 Cursor SDK 的 nested sub-agent 实现方式
+
+---
+
+## Cursor 3.8 — /automate Skill & Automation Triggers
+
+**日期**：2026-06-18
+**来源**：[Cursor Changelog](https://cursor.com/changelog) ｜ [Developer Toolkit](https://developertoolkit.ai/en/cursor-ide/version-management/changelog/)
+**可信度**：🟢 官方
+
+### 核心功能
+- **/automate skill**：在 Agent 会话中用自然语言描述任务，Cursor 自动配置触发器、指令和工具
+- **Automation Triggers**：新增 GitHub 和 Slack 触发器 — Agent 可以在代码推送、PR 创建或 Slack 消息时自动执行
+- **Computer Use 支持**：Agent 可操作浏览器、桌面等环境
+
+### 拆解分析
+- **从辅助到自主的跃迁**：/automate 让开发者只需描述「做什么」，Cursor 自行配置执行管线 — 这对应其「三级跳」策略中的第三级「自主」
+- **触发器 = 事件驱动 Agent**：GitHub + Slack 触发器将 Cursor Agent 从「IDE 内的协作者」扩展为「跨平台自动化引擎」
+- **Computer Use 是差异化**：目前仅 Cursor 在 IDE 产品中提供完整的 Computer Use 能力
+
+### 可复用的点
+- **自然语言配置**：用自然语言替代手动配置 workflow 是降低 Agent 使用门槛的关键模式
+- **事件驱动 Agent**：将 Agent 绑定到开发事件（push/PR/Slack）可以极大提高「自动发生」的比例
+- **分层自动化**：/automate 对应「无代码」Agent 构建，SDK 对应「可编程」Agent 构建 — 覆盖不同技能水平的用户
+
+### 踩过的坑
+- 暂无公开踩坑记录。但 Computer Use 的安全沙箱和资源消耗是需要关注的潜在风险
+
+### 行动项
+- [ ] 体验 /automate skill：测试用自然语言创建自动化工作流的上限
+- [ ] 评估将事件驱动 Agent 模式引入自有产品的可行性

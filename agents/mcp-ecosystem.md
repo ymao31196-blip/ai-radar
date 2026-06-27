@@ -150,3 +150,42 @@ GitHub 已把第三方 coding agents（包括 Claude 和 OpenAI Codex）生成�
 
 ### 行动项
 - [ ] 继续跟踪 issue #2904 的后续回复、关联 PR / SEP
+
+---
+
+## MCP 2026-07-28 Release Candidate — 无状态协议革命
+
+**日期**：2026-06-27（RC 可用）
+**来源**：[MCP Blog — 2026-07-28 RC](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/)
+**可信度**：🟢 官方
+
+### 核心思路
+MCP 协议迎来史上最大版本更新。RC 即日起可用，正式规范将于 2026-07-28 发布。核心变更是**协议层无状态化**——这是 MCP 从 1.0 到 2.0 的跨越。
+
+### 四大变更领域
+| 领域 | 变更 | Breaking? |
+|------|------|-----------|
+| **无状态核心** | 移除 session handshake，每次请求自包含（类似浏览网页：每次请求独立，服务端不需要"记住上次聊到哪了"） | ✅ Breaking |
+| **Extensions 框架** | MCP Apps + Tasks 扩展正式纳入协议 | ✅ Breaking |
+| **认证加固** | OAuth 2.0 / mTLS（双向加密传输，客户端和服务端互相验证身份）标准化 | ✅ Breaking |
+| **废弃策略** | Roots、Sampling、Logging 正式废弃 | ✅ Breaking |
+
+### 解决了什么问题
+- **痛点**：有状态 session 导致 MCP server 必须维护连接状态，不利于水平扩展和无服务器部署
+- **MCP Apps + Tasks**：MCP 从「工具调用协议」升级为「应用+工作流协议」— 第三方可以构建完整的 MCP 应用
+- **认证标准化**：企业部署 MCP 不再需要自定义认证方案
+
+### 适用场景
+- ✅ 适合：所有使用 MCP 的开发者——RC 中的 breaking changes 需要在 7/28 前完成迁移
+- ✅ 适合：构建 MCP Server/MCP App 的团队——Extensions 框架提供了新的产品形态
+- ❌ 不适合：未使用 MCP 的项目
+
+### 限制 & 注意
+- RC 阶段（06-27 至 07-28），SDK 陆续适配中
+- 四个领域全部引入 breaking changes，迁移成本不低
+- 现有 MCP Server 需在 7/28 前适配新规范
+
+### 行动项
+- [ ] 阅读 [RC migration guide](https://chatforest.com/builders-log/mcp-spec-2026-07-28-release-candidate-stateless-breaking-changes-builder-guide/)
+- [ ] 检查自有 MCP Server 的 session 依赖，评估迁移工作量
+- [ ] 浏览 MCP Registry 中标记为 "App" 类型的项目，筛选 3 个可复用的第三方 MCP App
