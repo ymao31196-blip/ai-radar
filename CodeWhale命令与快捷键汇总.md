@@ -4,23 +4,76 @@
 
 说明：以下内容根据本机当前安装版本的 `codewhale --help`、`codewhale-tui --help`、`features list` 和 TUI 内置帮助文本整理。TUI 内也可以直接输入 `/help` 或按 `Ctrl+K` 查看命令面板。
 
-## 多智能体powershell指令
+## 多智能体 PowerShell 指令
 
-### code
+### code（通用代码工作流）
+
+硬编排多智能体代码工作流：research → plan → implement → test → review（多轮循环）。
 
 ```powershell
+# 基本用法
 powershell -ExecutionPolicy Bypass -File "C:\Users\86183\.codewhale\orchestrators\Invoke-CodeWhaleCodeWorkflow.ps1" `
-  -ProjectDir "你的项目目录" `
+  -ProjectDir "C:\Users\86183\Desktop\AI\ai-radar" `
   -Task "检查整个项目，制定计划，完成修改，运行测试，并调用 review 子智能体审查。" `
   -RunId "code-task-001"
+
+# 指定多轮审查循环（默认 3 轮，可设 1-5）
+powershell -ExecutionPolicy Bypass -File "C:\Users\86183\.codewhale\orchestrators\Invoke-CodeWhaleCodeWorkflow.ps1" `
+  -ProjectDir "C:\Users\86183\Desktop\AI\ai-radar" `
+  -Task "将代码生成工具更新到最新版本。" `
+  -MaxReviewRounds 5
+
+# 全参数
+powershell -ExecutionPolicy Bypass -File "C:\Users\86183\.codewhale\orchestrators\Invoke-CodeWhaleCodeWorkflow.ps1" `
+  -ProjectDir "C:\Users\86183\Desktop\AI\ai-radar" `
+  -Task "检查整个项目，制定计划，完成修改，运行测试，并调用 review 子智能体审查。" `
+  -RunId "code-task-001" `
+  -TestCommand "python -m pytest tests/" `
+  -PlannerModel "deepseek-v4-pro" `
+  -WorkerModel "deepseek-v4-flash" `
+  -ReviewModel "deepseek-v4-pro" `
+  -MaxReviewRounds 3
+
+# 仅生成 prompt 不调用模型（调试用）
+powershell -ExecutionPolicy Bypass -File "C:\Users\86183\.codewhale\orchestrators\Invoke-CodeWhaleCodeWorkflow.ps1" `
+  -ProjectDir "C:\Users\86183\Desktop\AI\ai-radar" `
+  -Task "..." `
+  -DryRun
+
+# 强制重跑所有步骤（跳过已存在的 checkpoint）
+powershell -ExecutionPolicy Bypass -File "C:\Users\86183\.codewhale\orchestrators\Invoke-CodeWhaleCodeWorkflow.ps1" `
+  -ProjectDir "C:\Users\86183\Desktop\AI\ai-radar" `
+  -Task "..." `
+  -Force
 ```
-### 论文
+
+各参数的说明：
+
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `-ProjectDir` | 必填 | 工作目录 |
+| `-Task` | 必填 | 任务描述，任意自然语言 |
+| `-RunId` | 自动生成 | 运行 ID，决定 checkpoint 目录名 |
+| `-TestCommand` | 空 | 指定测试命令（如 `pytest`）；不指定则让 test agent 自己探查 |
+| `-PlannerModel` | `deepseek-v4-pro` | research 和 plan agent 的模型 |
+| `-WorkerModel` | `deepseek-v4-flash` | implement 和 test agent 的模型 |
+| `-ReviewModel` | `deepseek-v4-pro` | review agent 的模型 |
+| `-MaxReviewRounds` | `3` | 审查循环最大轮数，设为 1 等价于单次循环 |
+| `-Force` | off | 强制重跑所有已存在的 checkpoint |
+| `-DryRun` | off | 只生成 prompt 文件，不调用模型 |
+
+### 论文语言润色工作流
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "C:\Users\86183\.codewhale\orchestrators\Invoke-CodeWhaleCodeWorkflow.ps1" `
-  -ProjectDir "你的项目目录" `
-  -Task "检查整个项目，制定计划，完成修改，运行测试，并调用 review 子智能体审查。" `
-  -RunId "code-task-001"
+powershell -ExecutionPolicy Bypass -File "C:\Users\86183\.codewhale\orchestrators\Invoke-CodeWhaleThesisWorkflow.ps1" `
+  -InputFile "C:\Users\86183\Desktop\out\12\11.txt" `
+  -OutputFile "C:\Users\86183\Desktop\out\12\11_codewhale_final.md"
+
+# 从已有 checkpoint 恢复
+powershell -ExecutionPolicy Bypass -File "C:\Users\86183\.codewhale\orchestrators\Invoke-CodeWhaleThesisWorkflow.ps1" `
+  -InputFile "C:\Users\86183\Desktop\out\12\11.txt" `
+  -OutputFile "C:\Users\86183\Desktop\out\12\11_codewhale_final.md" `
+  -RunId "thesis-001"
 ```
 
 ## 常用启动方式
@@ -41,68 +94,6 @@ TUI 本体使用 `-w` 指定工作区：
 
 ```powershell
 codewhale --yolo -C "C:\Users\86183\Desktop\AI" -p "先检查项目结构，不要修改文件。"
-```
-
-## 外部 CLI 命令
-
-这些是在 PowerShell 里执行的命令，不是 TUI 里的 `/命令`。
-
-```text
-codewhale run          运行交互/非交互流程
-codewhale doctor       诊断配置、API、工具依赖
-codewhale models       列出 provider 可用模型
-codewhale speech       小米 MiMo TTS 语音生成，别名 tts
-codewhale sessions     列出保存的 TUI 会话
-codewhale resume       恢复保存的会话
-codewhale fork         分叉会话
-codewhale init         在当前目录创建 AGENTS.md
-codewhale setup        初始化 MCP / skills / tools / plugins
-codewhale exec         非交互执行 prompt
-codewhale review       基于 git diff 做代码审查
-codewhale apply        应用 patch
-codewhale eval         离线评测
-codewhale mcp          管理 MCP 服务
-codewhale features     查看功能开关
-codewhale serve        启动本地服务
-codewhale completions  生成 shell completion
-codewhale login        配置 provider credentials
-codewhale logout       删除登录状态
-codewhale auth         管理认证
-codewhale config       读写配置
-codewhale model        解析或列出模型
-codewhale thread       管理 thread / session 元数据
-codewhale sandbox      评估 sandbox/审批策略
-codewhale metrics      使用量统计
-codewhale update       检查或更新 CodeWhale
-```
-
-常用外部参数：
-
-```text
--C, --workspace <DIR>       指定工作区，外层 codewhale.exe 用这个
---provider <PROVIDER>       指定 provider，例如 deepseek
---model <MODEL>             指定模型
---api-key <API_KEY>         临时传 API key
---base-url <BASE_URL>       临时传 base URL
---yolo                      自动批准工具
--c, --continue              继续最近会话
--p, --prompt <PROMPT>       初始 prompt
---skip-onboarding           跳过 onboarding
---mouse-capture             开启鼠标捕获
---no-mouse-capture          关闭鼠标捕获
-```
-
-TUI 本体常用参数：
-
-```text
--w, --workspace <DIR>       指定工作区，codewhale-tui.exe 用这个
--p, --prompt <PROMPT>       初始 prompt
---yolo                      自动批准工具和 shell 执行
---max-subagents <1-20>      最大并发子智能体数量
--r, --resume <ID>           恢复指定会话
--c, --continue              继续最近会话
---fresh                     忽略崩溃恢复，开新会话
---no-project-config         跳过项目级 .codewhale/config.toml
 ```
 
 ## TUI 内部 / 命令
@@ -333,4 +324,66 @@ apply_patch     experimental  true
 mcp             experimental  true
 exec_policy     experimental  true
 vision_model    experimental  false
+```
+
+## 外部 CLI 命令
+
+这些是在 PowerShell 里执行的命令，不是 TUI 里的 `/命令`。
+
+```text
+codewhale run          运行交互/非交互流程
+codewhale doctor       诊断配置、API、工具依赖
+codewhale models       列出 provider 可用模型
+codewhale speech       小米 MiMo TTS 语音生成，别名 tts
+codewhale sessions     列出保存的 TUI 会话
+codewhale resume       恢复保存的会话
+codewhale fork         分叉会话
+codewhale init         在当前目录创建 AGENTS.md
+codewhale setup        初始化 MCP / skills / tools / plugins
+codewhale exec         非交互执行 prompt
+codewhale review       基于 git diff 做代码审查
+codewhale apply        应用 patch
+codewhale eval         离线评测
+codewhale mcp          管理 MCP 服务
+codewhale features     查看功能开关
+codewhale serve        启动本地服务
+codewhale completions  生成 shell completion
+codewhale login        配置 provider credentials
+codewhale logout       删除登录状态
+codewhale auth         管理认证
+codewhale config       读写配置
+codewhale model        解析或列出模型
+codewhale thread       管理 thread / session 元数据
+codewhale sandbox      评估 sandbox/审批策略
+codewhale metrics      使用量统计
+codewhale update       检查或更新 CodeWhale
+```
+
+常用外部参数：
+
+```text
+-C, --workspace <DIR>       指定工作区，外层 codewhale.exe 用这个
+--provider <PROVIDER>       指定 provider，例如 deepseek
+--model <MODEL>             指定模型
+--api-key <API_KEY>         临时传 API key
+--base-url <BASE_URL>       临时传 base URL
+--yolo                      自动批准工具
+-c, --continue              继续最近会话
+-p, --prompt <PROMPT>       初始 prompt
+--skip-onboarding           跳过 onboarding
+--mouse-capture             开启鼠标捕获
+--no-mouse-capture          关闭鼠标捕获
+```
+
+TUI 本体常用参数：
+
+```text
+-w, --workspace <DIR>       指定工作区，codewhale-tui.exe 用这个
+-p, --prompt <PROMPT>       初始 prompt
+--yolo                      自动批准工具和 shell 执行
+--max-subagents <1-20>      最大并发子智能体数量
+-r, --resume <ID>           恢复指定会话
+-c, --continue              继续最近会话
+--fresh                     忽略崩溃恢复，开新会话
+--no-project-config         跳过项目级 .codewhale/config.toml
 ```

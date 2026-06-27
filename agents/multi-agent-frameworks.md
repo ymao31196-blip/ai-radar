@@ -7,6 +7,9 @@
 ### 核心思路
 近两周三个主流多 Agent 框架均有重大更新，且市场格局发生显著变化：**AutoGen 退役 → Microsoft Agent Framework 接班**。当前存活的三条路径各有侧重。
 
+### 通俗解释
+这篇是在回答“现在要做多 Agent 项目到底选谁”。AutoGen 像旧主流框架进入维护期，LangGraph 更像灵活但复杂的流程编排器，MAF 更像微软企业套件，CrewAI 更像按角色分工的快速原型工具。选错框架会影响后续迁移成本，所以需要按团队技术栈和项目阶段选。
+
 ### 架构对比
 
 | 维度 | LangGraph + Deep Agents | Microsoft Agent Framework | CrewAI |

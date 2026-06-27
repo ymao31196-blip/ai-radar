@@ -15,6 +15,9 @@
 ### 一句话描述
 基于知识图谱的持久记忆系统，让 AI 跨会话记住用户偏好和关键信息。
 
+### 通俗解释
+Memory MCP 像给 Claude 配一个本地长期笔记本。你告诉它一次项目偏好、命名习惯或常用方案，它以后可以从记忆里查回来，减少每次开新对话都要重新交代背景。
+
 ### 安装方式
 ```bash
 # TypeScript 版
@@ -78,6 +81,9 @@ npx -y @modelcontextprotocol/server-memory
 ### 一句话描述
 安全文件操作，带可配置的目录访问控制——拒绝访问限定目录外的任何路径。
 
+### 通俗解释
+Filesystem MCP 像给 Claude 一把“只能打开指定房间的钥匙”。它可以读写本地文件，但只能在你允许的目录里操作，适合让 AI 帮你整理项目文件，同时避免误碰系统目录或私人文件。
+
 ### 安装方式
 ```bash
 npx -y @modelcontextprotocol/server-filesystem /path/to/allowed/files
@@ -135,6 +141,9 @@ npx -y @modelcontextprotocol/server-filesystem /path/to/allowed/files
 
 ### 一句话描述
 Git 仓库操作工具：读取、搜索和操作 Git 仓库，支持 log、diff、blame、branch 等。
+
+### 通俗解释
+Git MCP 像给 Claude 接上仓库历史记录。它不只看当前文件，还能查某段代码什么时候改的、谁改的、两个提交差在哪里，适合代码审查、追 bug 和理解项目演化。
 
 ### 安装方式
 ```bash
@@ -197,6 +206,9 @@ python -m mcp_server_git
 ### 一句话描述
 Web 内容抓取并将 HTML 转为适合 LLM 消费的纯文本（Markdown）。
 
+### 通俗解释
+Fetch MCP 像一个网页清洗器：把网页里的广告、脚本和复杂 HTML 尽量去掉，整理成 Claude 更容易阅读的 Markdown。适合抓文档、博客和技术页面，但对需要浏览器执行 JavaScript 的页面能力有限。
+
 ### 安装方式
 ```bash
 uvx mcp-server-fetch
@@ -250,6 +262,9 @@ uvx mcp-server-fetch
 
 ### 一句话描述
 动态和反思式问题解决——通过思维序列实现逐步推理、修正和分支。
+
+### 通俗解释
+Sequential Thinking MCP 像给 Claude 一张可修改的草稿纸。遇到复杂推理时，它可以一步步写想法、发现错误后回退、换一个分支继续分析，适合系统设计、数学推导和多方案权衡。
 
 ### 安装方式
 ```bash
@@ -305,6 +320,9 @@ npx -y @modelcontextprotocol/server-sequential-thinking
 ### 一句话描述
 时间和时区转换工具——获取当前时间、转换时区、格式化日期。
 
+### 通俗解释
+Time MCP 解决的是“模型不知道现在几点”的基础问题。它可以查当前时间、换算时区、判断会议时间是否合适，适合日程安排、跨国协作和需要准确日期的自动化任务。
+
 ### 安装方式
 ```bash
 uvx mcp-server-time
@@ -356,6 +374,9 @@ uvx mcp-server-time
 
 ### 一句话描述
 GitHub API 官方集成——管理仓库、Issue、PR、Actions 等。
+
+### 通俗解释
+GitHub MCP 像把 GitHub 网页后台搬进 Claude 对话里。你可以让它查 issue、看 PR、读文件、触发或检查工作流，减少在浏览器、终端和聊天窗口之间来回切换。
 
 ### 安装方式
 ```bash
@@ -415,6 +436,9 @@ npx -y @modelcontextprotocol/server-github
 ### 一句话描述
 创建和操作 Excel 工作簿，支持公式、图表、格式化和数据透视表。
 
+### 通俗解释
+xlsx Skill 像一个会做 Excel 的助理：你给它原始数据和报表目标，它帮你建工作簿、写公式、做图表和格式化。适合预算表、销售汇总、实验结果表这类重复但容易耗时间的文档工作。
+
 ### 安装方式
 Claude 内置，无需安装。通过 API 调用需启用 beta header：
 ```python
@@ -472,6 +496,9 @@ response = client.messages.create(
 ### 一句话描述
 生成专业演示文稿，支持幻灯片、图表、过渡动画和品牌模板。
 
+### 通俗解释
+pptx Skill 像一个自动排版的 PPT 助理：你给主题、数据和受众，它帮你组织页结构、插图表、写演讲备注。适合先生成汇报初稿，再由人根据品牌模板和表达重点微调。
+
 ### 安装方式
 Claude 内置，使用方式同 xlsx Skill（skill_id: `pptx`）。
 
@@ -514,6 +541,9 @@ Claude 内置，使用方式同 xlsx Skill（skill_id: `pptx`）。
 ### 一句话描述
 创建格式化 PDF 文档，支持文本、表格、图片和排版。
 
+### 通俗解释
+pdf Skill 适合把对话里的内容直接变成可发送、不可轻易改动的正式文档。它像一个轻量排版器，能把 Markdown、表格和图片整理成 PDF，但不适合精修已有 PDF 或做非常复杂的印刷排版。
+
 ### 安装方式
 Claude 内置，使用方式同上（skill_id: `pdf`）。
 
@@ -552,6 +582,9 @@ Claude 内置，使用方式同上（skill_id: `pdf`）。
 
 ### 一句话描述
 生成 Word 文档，支持富文本格式、表格、样式和结构化排版。
+
+### 通俗解释
+docx Skill 像一个会整理 Word 初稿的文档助理：它能把项目说明、API 文档、报告材料变成带标题、列表、表格和样式的 Word 文件。适合需要交付可编辑文档的场景，而不是只在聊天里看答案。
 
 ### 安装方式
 Claude 内置，使用方式同上（skill_id: `docx`）。

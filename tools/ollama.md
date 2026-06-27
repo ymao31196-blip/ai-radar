@@ -25,6 +25,9 @@
   - MLX 嵌入层 NVFP4 global scale 量化改进（v0.30.6）
 - 修复：gemma4:12b 浮点异常崩溃（v0.30.5）、Windows 清理、Codex launch 配置隔离
 
+#### 通俗解释
+Ollama 这轮更新主要是在“本地跑模型”这件事上继续降低门槛：更多模型能跑，Apple Silicon 和部分 AMD/NVIDIA 环境更省心，还能更方便地接入 Cline、Qwen code、Codex App 这类编码工具。对个人电脑本地 AI 来说，它相当于模型运行器和工具连接器的组合。
+
 #### 有什么用
 - **Gemma 4 12B 本地运行**：Ollama 是目前最简单的 Gemma 4 本地部署方式
 - **Apple Silicon 加速**：MLX 引擎对 M 系列芯片推理有专门优化

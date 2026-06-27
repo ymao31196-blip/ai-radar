@@ -7,6 +7,9 @@
 ### 核心思路
 Claude Code 新增 **Dynamic Workflows** 能力：Agent 先分析任务制定计划，然后根据计划并行启动数百个子 Agent（fan-out），各子 Agent 独立执行子任务，最后汇总验证结果。模式：**Plan → Fan-out → Parallel Execute → Verify**。
 
+### 通俗解释
+Dynamic Workflows 像一个项目经理先把大工程拆成任务包，再让很多工程师同时开工，最后集中验收。它适合“一个 Agent 从头做到尾太慢、太容易漏”的大任务，例如全库迁移或批量审查；但对单文件小修来说就是杀鸡用牛刀。
+
 ### 架构图
 
 ```

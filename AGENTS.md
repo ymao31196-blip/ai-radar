@@ -53,3 +53,4 @@ This project uses Git. See .gitignore for excluded files.
 - Keep changes focused and atomic
 - Document public APIs
 - Update this file when project conventions change
+- Every AI Radar record must include a `通俗解释` section: explain the item in plain language for non-specialists, expand key abbreviations/terms, and prefer a concrete analogy or use scenario before listing technical details.
