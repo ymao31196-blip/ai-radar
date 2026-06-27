@@ -29,6 +29,9 @@ AutoGen 已不再接受新功能开发。微软将 Agent 框架重心迁移至 *
   - `tool_choice` 参数
 - Breaking Change：无（但这是最后一个大版本）
 
+#### 通俗解释
+AutoGen v0.6.0 像老产品退休前的最后一次大补丁：补上并发 Agent、OpenAI 原生集成和 MCP 传输等能力，但之后不会再发展新功能。已有项目可以用它稳定过渡，新项目就不该再把 AutoGen 当长期主线。
+
 #### 有什么用
 - GraphFlow 并发是 AutoGen 最强新功能，适合需要并行 Agent 的场景
 - 但如果要长期使用，建议直接迁移到 MAF
@@ -56,6 +59,9 @@ AutoGen 已不再接受新功能开发。微软将 Agent 框架重心迁移至 *
 - 跨语言：Python + C#/.NET 统一 API
 - 标准支持：A2A（Agent-to-Agent）+ MCP 互操作
 - 图驱动工作流 + checkpointing + 人机协作 + 时间回溯
+
+#### 通俗解释
+Microsoft Agent Framework 是微软给 AutoGen 找的新接班人，更像一个企业级 Agent 操作系统：能部署、调试、保存进度、回滚时间线，也能让不同语言和不同框架的 Agent 协作。它关注的不是单个聊天机器人，而是可维护、可恢复、可审计的生产工作流。
 
 #### 有什么用
 - **生产级 Agent 框架**：checkpointing 和时间回溯解决 Agent 编排中的故障恢复问题

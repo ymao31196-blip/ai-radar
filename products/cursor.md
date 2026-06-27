@@ -8,6 +8,9 @@
 ### 一句话定位
 从 AI 编码 IDE 进化为「自我驱动代码库」平台——能独立管理 PR、rollout、生产监控的 AI Agent 平台。
 
+### 通俗解释
+Cursor 不再只是“补全代码更聪明的编辑器”，而是在往能接管开发流程的 Agent 平台走。它从写一段代码，扩展到改整个 PR、在云端跑任务、做 UI、审 bug、接企业组织管理；这就是从工具到平台的变化。
+
 ### 核心功能
 - **Composer 2.5**：长周期 Agent 任务，自动跨文件编辑、测试、提交
 - **Cloud Agents**（新）：代码修改在云端沙箱运行，不占用本地资源
@@ -67,6 +70,9 @@
 - **/automate skill**：在 Agent 会话中用自然语言描述任务，Cursor 自动配置触发器、指令和工具
 - **Automation Triggers**：新增 GitHub 和 Slack 触发器 — Agent 可以在代码推送、PR 创建或 Slack 消息时自动执行
 - **Computer Use 支持**：Agent 可操作浏览器、桌面等环境
+
+### 通俗解释
+Cursor 3.8 的重点是让 Agent 从“你叫它才干活”变成“事件发生就自动干活”。例如 PR 创建、代码 push 或 Slack 消息触发后，Agent 可以按预设流程行动；`/automate` 则像用自然语言配置自动化，不必手写复杂 workflow。
 
 ### 拆解分析
 - **从辅助到自主的跃迁**：/automate 让开发者只需描述「做什么」，Cursor 自行配置执行管线 — 这对应其「三级跳」策略中的第三级「自主」

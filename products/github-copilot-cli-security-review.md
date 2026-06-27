@@ -8,6 +8,9 @@
 ### 一句话定位
 GitHub Copilot CLI 新增 `/security-review` 命令，可以在终端直接对当前变更做安全审查。
 
+### 通俗解释
+这个功能像在提交代码前多按一次“安全检查”按钮，而且按钮就在终端里。它不是完整替代 GitHub 的 code scanning 或 Dependabot，而是给开发者一个轻量的预检查入口，尽早发现明显安全问题。
+
 ### 核心功能
 - 直接在 Copilot CLI 中运行安全审查，帮助在提交前发现漏洞。
 - 这是一条 Copilot 驱动的扫描链路，不依赖 GitHub code scanning、Dependabot 或 secret scanning。

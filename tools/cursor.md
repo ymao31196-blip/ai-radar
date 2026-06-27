@@ -19,6 +19,9 @@
   - 自动判断操作是否需要人工审批
 - Breaking Change：无
 
+#### 通俗解释
+Auto-review Run Mode 像给 Cursor Agent 装了一个“门卫”：常见、安全的命令可以自动放行，危险或没见过的操作再请人确认。这样既不会让每个小命令都打断工作，也能避免 Agent 随便执行高风险 Shell、联网或 MCP 工具调用。
+
 #### 有什么用
 - **安全自动化**：Shell/Fetch 操作不再每次弹窗审批，白名单命令自动放行
 - **MCP 工具管控**：对 MCP Server 的工具调用可以分级管理
@@ -47,6 +50,9 @@
     - auto-review SDK 支持
 - 修复：HTTP/1.1 cloud streaming
 
+#### 通俗解释
+这次更新让 Cursor 从“会写代码的 IDE”继续往“可扩展 Agent 平台”走。`local.customTools` 像把你自己的脚本直接变成 Agent 的工具箱；嵌套子 Agent 则像让主 Agent 临时叫几个助手分别干子任务，适合更复杂的开发工作流。
+
 #### 有什么用
 - **自定义工具零门槛**：`local.customTools` 让开发者直接在 Cursor 中注册 Python 函数为 Agent 工具，比搭建 MCP Server 简单很多
 - **嵌套 Agent**：复杂任务可自动分解为子 Agent 并行执行（类似 Claude Code Dynamic Workflows）
@@ -65,6 +71,9 @@
 #### 变化了什么
 - 新功能：Enterprise Organizations — 多团队管理、组织级 IDP（身份提供商）、用量分析
 - Breaking Change：无
+
+#### 通俗解释
+Enterprise Organizations 解决的是“公司里很多团队都在用 Cursor，谁来管账号、权限和用量”的问题。它像企业版后台，把身份登录、团队分组和用量统计集中起来，方便采购和安全团队统一管理。
 
 #### 有什么用
 - 大团队采购时可以统一管理多个 Team、查看跨团队用量

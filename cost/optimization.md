@@ -141,6 +141,9 @@ Linux Foundation 旗下的 Tokenomics Foundation 旨在统一 AI token 的计费
 - tokens-per-watt（单位能效）
 - 更一致的 token 计价与指标口径
 
+### 通俗解释
+Tokenomics Foundation 想做的是给 AI 成本管理统一“度量衡”。现在每家模型厂商都按 token 收费，但 token 到底对应多少价值、多少能耗、多少业务产出并不好比较；标准化后，团队才能像管理云成本一样管理 AI 成本，而不是只看月底总账单。
+
 ### 对我们项目的影响
 
 - 需要尽早建立按模型、按场景、按开发者的 token 用量仪表盘。
@@ -166,6 +169,9 @@ Linux Foundation 旗下的 Tokenomics Foundation 旨在统一 AI token 的计费
 - 之前：Agent SDK 和 `claude -p` 订阅计划用量与交互式使用额度共用。
 - 现在：从 2026-06-15 起，订阅计划上的 Agent SDK 和 `claude -p` 用量会改走新的月度 Agent SDK credit，与交互式使用额度分开。
 - 变动幅度：额度被拆分，agent 任务的预算、监控和告警要单独做。
+
+### 通俗解释
+这条和“家庭共享流量被拆成聊天流量和自动化流量”很像：你手动和 Claude 对话还走原来的订阅额度，但让 Agent SDK 或 `claude -p` 自动跑任务时，会走单独的信用池。批量任务如果不单独监控，很容易在后台把额度烧完。
 
 ### 对我们项目的影响
 - 如果团队在 Claude Code / Agent SDK 上跑批量 agent，不能再把它当成“交互式额度的附属消耗”。

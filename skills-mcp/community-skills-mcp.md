@@ -21,6 +21,9 @@
 #### 一句话描述
 浏览器自动化——让 AI 控制 Chrome 浏览器进行网页操作、截图、表单填写和 E2E 测试。
 
+#### 通俗解释
+Puppeteer MCP 像给 AI 一双能操作浏览器的手和眼睛：它能打开页面、点按钮、填表、截图、看控制台报错。适合前端调试和简单网页流程验证，但因为要启动真实浏览器，速度和资源开销都比普通网页抓取更高。
+
 #### 安装方式
 ```bash
 npx -y @modelcontextprotocol/server-puppeteer
@@ -76,6 +79,9 @@ npx -y @modelcontextprotocol/server-puppeteer
 #### 一句话描述
 Microsoft 官方的 Playwright MCP Server——跨浏览器自动化，支持 Chromium / Firefox / WebKit。
 
+#### 通俗解释
+Playwright MCP 像更现代的浏览器测试机器人，不只会操作 Chrome，也能覆盖 Firefox 和 WebKit。它更适合正式 E2E 测试和跨浏览器检查，尤其适合前端页面需要确认“不同浏览器都正常”的场景。
+
 #### 安装方式
 ```bash
 npx -y @playwright/mcp
@@ -119,6 +125,9 @@ npx -y @playwright/mcp
 
 #### 一句话描述
 Brave Search API 集成——让 AI 进行网页搜索和本地搜索。
+
+#### 通俗解释
+Brave Search MCP 给 AI 接上实时搜索入口。模型自己的知识会过期，接入搜索后可以查最新文档、版本变动和当前事件；它更像搜索引擎接口，不是深度研究工具，结果仍需要交叉验证。
 
 #### 安装方式
 ```bash
@@ -172,6 +181,9 @@ npx -y @modelcontextprotocol/server-brave-search
 
 #### 一句话描述
 PostgreSQL 数据库直连——让 AI 读取 Schema、执行查询、分析数据。
+
+#### 通俗解释
+PostgreSQL MCP 像让 AI 坐到数据库只读客户端前。你可以用自然语言问表结构、索引、最近数据异常，AI 再转成 SQL 查询；生产环境最好用只读账号，避免把对话助手变成误操作数据库的入口。
 
 #### 安装方式
 ```bash
@@ -227,6 +239,9 @@ npx -y @modelcontextprotocol/server-postgres
 #### 一句话描述
 SQLite 数据库直连——零配置、单文件，快速数据分析。
 
+#### 通俗解释
+SQLite MCP 适合分析本地单文件数据库，例如桌面应用缓存、日志库、实验结果库。它像一个轻量数据库放大镜，不需要服务器连接，直接拿 `.db` 文件就能查结构和数据。
+
 #### 安装方式
 ```bash
 uvx mcp-server-sqlite --db-path /path/to/database.db
@@ -272,6 +287,9 @@ uvx mcp-server-sqlite --db-path /path/to/database.db
 #### 一句话描述
 Obsidian 笔记库集成——让 AI 读取、搜索、编辑你的 Obsidian Vault。
 
+#### 通俗解释
+Obsidian MCP 像把你的个人知识库交给 AI 做整理。它可以跨笔记查主题、找双向链接、补摘要、发现孤立知识点，适合长期写笔记的人；写入前要谨慎，因为笔记库通常是个人知识资产。
+
 #### 安装方式
 ```bash
 npx -y @smithery/cli install @smithery-ai/obsidian --client claude
@@ -314,6 +332,9 @@ npx -y @smithery/cli install @smithery-ai/obsidian --client claude
 
 #### 一句话描述
 Notion API 集成——让 AI 读写 Notion 页面、数据库和内容块。
+
+#### 通俗解释
+Notion MCP 像给团队知识库加一个自然语言操作层。你可以让 AI 查项目数据库、更新任务状态、生成周报摘要；它适合团队协作，但权限取决于 Notion Integration 授权范围。
 
 #### 安装方式
 ```bash
@@ -363,6 +384,9 @@ NOTION_API_KEY=secret_xxx
 #### 一句话描述
 新一代 Web 内容提取——TLS 指纹绕过反爬，比 raw HTML 减少 67% token 消耗。
 
+#### 通俗解释
+webclaw 更像批量网页研究工具，而不是单页抓取器。它会尽量把网页内容清洗成更少 token 的文本，还处理一部分反爬问题，适合竞品分析、文档站批量提取和 SEO 研究。
+
 #### 安装方式
 ```bash
 npx create-webclaw  # 自动配置 Claude / Cursor / Windsurf / Codex
@@ -399,6 +423,9 @@ npx create-webclaw  # 自动配置 Claude / Cursor / Windsurf / Codex
 
 #### 一句话描述
 Linear 项目管理集成——创建/查看 Issue、管理 Sprint、搜索团队任务。
+
+#### 通俗解释
+Linear MCP 像让 AI 成为项目助理：它可以查本周任务、整理 blocked issue、生成 sprint 汇报或创建任务。适合开发团队已经用 Linear 管理需求和缺陷时，把对话直接连接到项目管理系统。
 
 #### 安装方式
 ```bash
@@ -446,6 +473,9 @@ npx -y @tacticlaunch/mcp-linear
 #### 一句话描述
 Docker 容器管理——让 AI 管理镜像、容器、卷和 Compose。
 
+#### 通俗解释
+Docker MCP 像把容器控制台交给 AI。它能查看容器状态、读日志、清理镜像、排查重启问题；因为权限接近当前用户的 Docker 权限，生产机器上使用前必须明确边界。
+
 #### 安装方式
 ```bash
 npx -y @quantgeekdev/docker-mcp
@@ -492,6 +522,9 @@ npx -y @quantgeekdev/docker-mcp
 #### 一句话描述
 让 Claude 通过 MCP 调用本地 Ollama 模型——运行 Llama / Mistral / Qwen 等开源模型。
 
+#### 通俗解释
+Ollama Bridge 像给 Claude 接了一个本地模型副手。敏感数据可以先交给本地开源模型预处理，Claude 再做最终总结；也可以用来比较不同模型回答。缺点是效果和速度取决于本机硬件和本地模型质量。
+
 #### 安装方式
 ```bash
 pip install mcp-server-ollama-bridge
@@ -534,6 +567,9 @@ pip install mcp-server-ollama-bridge
 
 #### 一句话描述
 Perplexity AI 搜索集成——带引用来源的深度搜索。
+
+#### 通俗解释
+Perplexity MCP 更像“带来源的研究搜索”，适合需要引用链接和多源交叉验证的调研任务。相比普通搜索，它更偏整理答案和出处；相比模型直接回答，它能降低过期知识和无来源断言的风险。
 
 #### 安装方式
 ```bash
@@ -581,6 +617,9 @@ pip install mcp-server-perplexity
 #### 一句话描述
 增强版时间工具——自然语言解析、多格式输出、时区转换。
 
+#### 通俗解释
+mcp-time 像一个更懂自然语言的时区换算器。你可以直接问“下周五下午两点太平洋时间是北京时间几点”，它负责解析和格式化；适合跨时区会议、自动化提醒和日志时间转换。
+
 #### 安装方式
 ```bash
 go install github.com/TheoBrigitte/mcp-time@latest
@@ -623,6 +662,9 @@ go install github.com/TheoBrigitte/mcp-time@latest
 
 #### 一句话描述
 DeepSeek AI 集成——让 Claude 调用 DeepSeek 的 Chat/Reasoning/Function Calling 能力。
+
+#### 通俗解释
+DeepSeek Bridge 像给 Claude 接一个低成本中文和批量推理助手。复杂总结仍可由 Claude 完成，翻译、预处理、批量分类等大量任务可以交给 DeepSeek 降本；代价是多一次 API 调用和桥接延迟。
 
 #### 安装方式
 ```bash
@@ -675,6 +717,9 @@ npx -y deepseek-mcp-server
 #### 一句话描述
 将任何 REST API 变成 MCP Server。已有 18 个免费公共服务（GitHub、Stripe、Slack、OpenAI、Notion 等），无需部署、用自己的 API Key 即可使用。
 
+#### 通俗解释
+APIFold 像一个 REST API 到 MCP 的转换器。你不用自己写 Server，就能把 GitHub、Stripe、Slack 等服务接给 Agent 使用；适合快速试验，但长期关键系统仍要评估第三方依赖和权限边界。
+
 #### 安装方式
 在线服务，直接配置 URL 到 Claude Desktop：
 ```json
@@ -716,6 +761,9 @@ npx -y deepseek-mcp-server
 #### 一句话描述
 企业自托管的 MCP Server 注册中心——适合公司内部统一管理和分发 AI 工具。
 
+#### 通俗解释
+MCPJungle 像公司内部的 MCP 工具市场。团队一多，工具散落在各个仓库会很难管理；私有注册中心可以统一登记、分发、控权和升级，适合已经有多个内部 MCP Server 的组织。
+
 #### 安装方式
 ```bash
 # 自托管部署
@@ -743,6 +791,9 @@ git clone https://github.com/duaraghav8/MCPJungle
 
 #### 一句话描述
 构建 MCP Server 的高层框架——装饰器定义工具，零样板代码。Python 和 TypeScript 双版本。
+
+#### 通俗解释
+FastMCP 像 MCP 开发的脚手架。直接用底层 SDK 要写很多重复代码，FastMCP 用装饰器把普通函数快速包装成 Agent 可调用工具，适合把内部脚本、查询接口、自动化任务快速变成 MCP Server。
 
 #### 安装方式
 ```bash
@@ -798,6 +849,9 @@ npm install fastmcp
 
 ### 一句话描述
 把公司设立、银行开户、卡、发票和支付这类流程封装成一个可通过 MCP 调用的商业操作服务。
+
+### 通俗解释
+Lovie MCP 把公司注册和基础财务运营流程做成 Agent 可调用接口，像把一串表单、开户、发票和支付动作封装成工作流。因为涉及法律实体和金融操作，它只能做流程编排，关键步骤仍必须人工审核和合规确认。
 
 ### 安装方式
 ```bash

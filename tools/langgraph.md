@@ -27,6 +27,9 @@
   - `lc_agent_name`：命名工具调度的子 Agent
   - Deep Agents（高层 Agent 封装）：Agent 可规划、使用子 Agent、利用文件系统
 
+#### 通俗解释
+LangGraph 这轮更新让复杂 Agent 更像一套可观测的流程系统，而不是一段黑盒对话。Streaming 改进让远程执行的中间过程更容易实时看见；子 Agent 命名和子图隔离让排查问题时知道“是哪一个助手、哪一个步骤出了事”。
+
 #### 有什么用
 - **v3 Streaming 架构**：更高效的远程图执行，对 LangGraph Cloud 用户直接受益
 - **子 Agent 命名**：`lc_agent_name` 让多 Agent 日志和追踪更清晰

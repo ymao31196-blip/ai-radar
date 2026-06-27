@@ -8,6 +8,9 @@
 ### 一句话定位
 GitHub 曾把 Anthropic 的 Claude Fable 5 纳入 Copilot 模型选择器，但已于 2026-06-12 在全部 Copilot 入口暂停访问；其他 Claude 模型不受影响。
 
+### 通俗解释
+这条记录的是一个高端模型“刚上架又下架”的产品事件。对 Copilot 用户来说，Fable 5 原本意味着可以在 IDE、CLI、Web 等入口选择更强模型处理复杂代码任务；暂停后，高端模型菜单变窄，团队不能把它写进固定工作流。
+
 ### 核心功能
 - 在 Copilot 的模型选择器中可选 Claude Fable 5，覆盖 VS Code、Visual Studio、Copilot CLI、云端 agent、Copilot app、github.com、GitHub Mobile、JetBrains、Xcode、Eclipse 等多个入口。
 - 适用范围包括 Copilot Pro+、Max、Business、Enterprise。
@@ -57,6 +60,9 @@ GitHub 曾把 Anthropic 的 Claude Fable 5 纳入 Copilot 模型选择器，但�
 - GitHub Copilot 将于 2026-06-29 在所有体验中退役 Opus 4.6（Fast）模型
 - 影响范围：Copilot Chat、inline edits、ask/agent 模式、code completions
 - Fable 5 恢复前，Copilot 可用模型将进一步收缩
+
+### 通俗解释
+这可以理解成 Copilot 的模型货架在换货：旧的 Opus 4.6 Fast 要下架，而新的 Fable 5 又暂时不能用。结果是依赖特定高端模型的团队需要提前改默认模型，否则到退役日后体验和成本都可能变化。
 
 ### 有什么用
 - **选型决策**：Opus 4.6 退役 + Fable 5 暂停 = GitHub Copilot 的高端模型选择暂时受限

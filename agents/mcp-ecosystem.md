@@ -15,6 +15,9 @@
 ### 核心思路
 MCP Registry 是 MCP Server 的"应用商店"，已进入 **API freeze (v0.1)**。开发者可通过 GitHub OAuth/OIDC/DNS 验证发布自己的 MCP Server，让 Claude Code、ChatGPT、Cursor、VS Code 等客户端直接发现和使用。
 
+### 通俗解释
+MCP Registry 像 Agent 工具的应用商店。以前要用一个 MCP Server，常常得自己找 GitHub、clone、配置；有 Registry 后，开发者可以把工具登记进去，客户端也更容易发现和安装，降低“工具分散在各处”的使用门槛。
+
 ### 解决了什么问题
 - **痛点**：MCP Server 分散在各个 GitHub 仓库，用户需要手动 clone 和配置
 - **现在怎么做**：统一注册中心，一键安装和配置
@@ -33,6 +36,9 @@ MCP Registry 是 MCP Server 的"应用商店"，已进入 **API freeze (v0.1)**�
 
 ### 核心思路
 探索通过 MCP 原语（primitives）进行 **Skills 分发与发现** 的标准化机制。目标是让 Agent 技能可以跨平台复用——一次定义，任何 MCP 客户端都能用。
+
+### 通俗解释
+MCP Skills 实验想解决“同一个技能要给 Claude、Cursor、Codex 各写一遍”的问题。它的目标像统一插头标准：开发者只定义一次技能，多个 Agent 平台都能识别和调用，减少重复维护。
 
 ### 解决了什么问题
 - **痛点**：每个 Agent 平台（Claude Code、Cursor、Codex）有自己的 skill/plugin 格式，不互通。开发者为同一个工具需要维护多套 skill 定义
@@ -65,6 +71,9 @@ MCP Registry 是 MCP Server 的"应用商店"，已进入 **API freeze (v0.1)**�
 - **多语言 SDK 全覆盖**：降低不同技术栈的接入门槛
 - **RC 非最终版**：规范仍在迭代，生产环境建议等正式版
 
+### 通俗解释
+这组数据是在判断 MCP 生态是不是已经值得投入。Server 仓库、Inspector、SDK 和规范版本分别对应“工具数量、测试工具、开发语言支持、协议稳定度”。结论是生态很活跃，但规范仍在变，生产系统要留迁移空间。
+
 ### 行动项
 - [ ] 指派 1 人在 1 周内扫描 MCP Registry，列出 3-5 个对我们项目可复用的 MCP Server
 - [ ] 评估是否需要将我们的工具封装为 MCP Server 发布到 Registry
@@ -80,6 +89,9 @@ MCP Registry 是 MCP Server 的"应用商店"，已进入 **API freeze (v0.1)**�
 
 ### 核心思路
 Anthropic 在 Claude Partner Network 中推出了 **Partner Hub MCP 连接器**：合作伙伴通过 MCP 将业务数据（认证人数、生产部署数、案例引用数）连接到 Claude，用自然语言查询合作伙伴状态（「我离下一级还有多远？」「某笔注册交易的状态如何？」）。分级每天刷新，晋升每半年处理一次。
+
+### 通俗解释
+Partner Hub 的例子说明 MCP 不只是接 GitHub、数据库这类技术工具，也可以接企业内部运营数据。它像给合作伙伴后台加了一个“会说人话的数据查询入口”：用户不用翻表格和后台页面，直接问 Claude 就能查等级、交易和指标。
 
 ### 解决了什么问题
 - **MCP 连接业务数据的模板**：这是 Anthropic 官方首次展示 MCP 在企业内部系统中的应用——不是连接外部工具，而是连接内部业务数据库
@@ -103,6 +115,9 @@ Anthropic 在 Claude Partner Network 中推出了 **Partner Hub MCP 连接器**�
 
 ### 核心思路
 GitHub 已把第三方 coding agents（包括 Claude 和 OpenAI Codex）生成的代码纳入自动安全验证，处理方式与 GitHub Copilot cloud agent 对齐。
+
+### 通俗解释
+这相当于 GitHub 给“AI 写进 PR 的代码”加了一道自动安检。无论代码来自 Copilot 还是第三方 Agent，GitHub 都会在合并前查常见漏洞、脆弱依赖和泄露密钥，减少 AI 生成代码直接把安全问题带进仓库的风险。
 
 ### 解决了什么问题
 - **痛点**：第三方 agent 写出的代码可能把漏洞、脆弱依赖或密钥泄露带进 PR。
@@ -135,6 +150,9 @@ GitHub 已把第三方 coding agents（包括 Claude 和 OpenAI Codex）生成�
 ### 核心思路
 根据 issue #2904 的报告，在 **Streamable HTTP** 场景下，Claude.ai 可能不会在新会话中重新调用 `tools/list`，从而让工具清单更新难以及时下发。这里记录的是 issue 反馈，不是 MCP 规范已经确认的缓存机制。
 
+### 通俗解释
+这条是在提醒：工具清单可能不像你想象的那样“每开新会话必刷新”。如果 MCP Server 改了工具 schema，但客户端还拿着旧清单，就会出现新工具不可见或参数不匹配。因为这只是 issue 观察，所以要当风险记录，不要当官方结论。
+
 ### 解决了什么问题
 - **痛点**：如果这类行为复现，工具定义更新后，客户端可能暂时看不到新 schema。
 - **之前怎么做**：默认假设新会话一定会再次调用 `tools/list`。
@@ -161,6 +179,9 @@ GitHub 已把第三方 coding agents（包括 Claude 和 OpenAI Codex）生成�
 
 ### 核心思路
 MCP 协议迎来史上最大版本更新。RC 即日起可用，正式规范将于 2026-07-28 发布。核心变更是**协议层无状态化**——这是 MCP 从 1.0 到 2.0 的跨越。
+
+### 通俗解释
+无状态化可以理解成“每次请求都自己带齐上下文”，服务端不再必须记住上一轮会话状态。好处是 MCP Server 更容易横向扩展、部署到无服务器环境；代价是旧的 session 依赖、认证和扩展方式都要改，所以这是一次真正的 breaking change。
 
 ### 四大变更领域
 | 领域 | 变更 | Breaking? |
